@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script>
+if (localStorage.getItem("logged") !== "true") {
+  window.location.href = "connexion.html";
+}
+</script>
+<body>
+  <div class="card">
+   <h1>Dashboard</h1>
+
+<h2 id="level">Niveau</h2>
+
+<div class="progress-container">
+  <div class="progress-text" id="progressText">Progression</div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<a href="missions.html" class="btn">Missions</a>
+<a href="profil.html" class="btn">Profil</a>
+<a href="classement.html" class="btn">Classement</a>
+
+<script src="logic.js"></script>
+<script>
+  const points = parseInt(localStorage.getItem("points"));
+  const level = getLevel(points);
+  const progress = getProgress(points);
+
+  document.getElementById("level").textContent = "Niveau " + level;
+  document.getElementById("progressText").textContent =
+    "Progression : " + progress + "%";
+  document.getElementById("progressFill").style.width = progress + "%";
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Classement</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Classement</h1>
+
+<div id="ranking"></div>
+
+<a href="dashboard.html" class="btn">Retour</a>
+
+<script src="logic.js"></script>
+<script>
+  const users = [
+    { name: "User A", points: 300 },
+    { name: "User B", points: 200 },
+    { name: "Toi", points: parseInt(localStorage.getItem("points") || 0) }
+  ];
+
+  users.sort((a, b) => b.points - a.points);
+
+  const rankingDiv = document.getElementById("ranking");
+  users.forEach((u, i) => {
+    rankingDiv.innerHTML += `<p>${i + 1}. ${u.name} - ${u.points} pts</p>`;
+  });
+</script>
+  </div>
+</body>
+</html>
